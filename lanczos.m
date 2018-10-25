@@ -17,15 +17,15 @@ f = w - T(1,1)*v0
 # Actual algorithm.
 
 for j = 0:m-2
-    b = norm(f)
-    T(j+1,j+2) = b
-    T(j+2,j+1) = T(j+1,j+2) 
-    v = f/b
-    w = A*v-b*v0
-    v0 = v
-    a = v'*w
-    T(j+2,j+2) = a
-    f = w - a*v
+    b = norm(f) # Get b_j.
+    T(j+1,j+2) = b # Put b_j in matrix.
+    T(j+2,j+1) = T(j+1,j+2) # Symmetrize.
+    v = f/b # Get v_{j+1}.
+    w = A*v-b*v0 
+    v0 = v # Update v0.
+    a = v'*w # Get alpha_{j+1}.
+    T(j+2,j+2) = a # Put in matrix.
+    f = w - a*v 
     
 end
 
