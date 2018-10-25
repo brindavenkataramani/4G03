@@ -1,7 +1,6 @@
 # Working implementation of Lanczos algorithm.
 # Seems to be very good at predicting highest eigenvalue. Moderately good at predicting the lowest eigenvalue. Everything in between is a crapshoot.
 # But this is what Lanczos is supposed to do anyway.
-# Written to make sure I understood what was going on with the Lanczos algorithm, so that I could do the implementation in C.
 
 L = 4
 n = 2^L
