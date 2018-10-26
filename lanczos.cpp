@@ -11,6 +11,10 @@ using namespace std;
 typedef vector<double> Row;
 typedef vector<Row> Matrix; // Define a matrix structure as vector of rows. Indexing is basically same as 2-dimensional array.
 
+// ******************************
+// END OF LIBRARIES & DEFINITIONS
+// ******************************
+
 // ************************
 // VECTOR UTILITY FUNCTIONS
 // ************************
