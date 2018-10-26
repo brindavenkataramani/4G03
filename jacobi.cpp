@@ -1,6 +1,6 @@
 /*
 
-This program contains all methods needed to run and test the Jacobi routine for the diagonalization of real symmetric matrices (i.e. Hermitian matrices). It was last updated on 2018-10-26 @ 9:05.
+This program contains all methods needed to run and test the Jacobi routine for the diagonalization of real symmetric matrices (i.e. Hermitian matrices). It was last updated on 2018-10-26 @ 16:53.
 
 TO-DO:
   * Tune the Jacobi routine (i.e. do validations before returning eigenvector.)
@@ -63,7 +63,7 @@ void print_matrix(Matrix &A, int N) {
 
   for(i = 0; i < N; i++) {
     for(j = 0; j < N; j++) {
-      printf("%f ", A[i][j]);
+      printf("%7.3f ", A[i][j]);
 
     }
 
@@ -218,6 +218,71 @@ void Jacobi(Matrix &A, vector<double>& v, int N) {
 // END OF JACOBI ROUTINE
 // *********************
 
+// ******************************
+// GENERATION OF SPECIAL MATRICES
+// ******************************
+
+/*
+
+Methods to generate special matrices.
+
+*/
+
+// Quick utility function for Dirac delta-function implementation.
+
+int delta_func(int i, int j) {
+  if(i == j) {
+    return 1;
+
+  }
+
+  else {
+    return 0;
+
+  }
+
+}
+
+// Quick utility function to return minimum between two integers. Returns either or if they are equal.
+
+int min(int i, int j) {
+  if(i > j) {
+    return j;
+
+  }
+
+  else if(i < j) {
+    return i;
+
+  }
+
+  else {
+    return i;
+
+  }
+
+}
+
+// Function to populate matrix for given potential.
+// In units of 2\hbar^2/\mu, where \mu is just mass.
+
+void populate_matrix(Matrix &A, int N) {
+  int i, j;
+
+  for(i = 0; i < N; i++) {
+    for(j = 0; j < N; j++) {
+      A[i][j] = (float)(i+1)*(float)(i+1)*(float)delta_func(i, j) + min(i+1,j+1)*(0.05 + pow(-1,fabs(i-j))*5);
+
+    }
+
+  }
+
+}
+
+// *************************************
+// END OF GENERATION OF SPECIAL MATRICES
+// *************************************
+
 // **************
 // DRIVER PROGRAM
 // **************
@@ -231,16 +296,27 @@ This contains the main method where I test the Jacobi routine I implemented. I t
 int main() {
 
   srand(time(0)); // Initialize random seed so we aren't always generating the same matrices over and over again.
-
-  int N = 10; // Size of N x N matrix.
+  int N = 5; // Size of N x N matrix.
   Matrix mat(N, Row(N)); // Declare N x N matrix.
   vector<double> eig(N); // Declare vector to store eigenvalues.
+
+  /*
+
   init_matrix(mat, N); // Initialize matrix with random elements.
   print_matrix(mat, N); // Print matrix (validation).
   Jacobi(mat, eig, N); // Diagonalize the matrix using the Jacobi routine.
   printf("\n");
   print_matrix(mat, N); // Print the matrix (validation).
   print_vector(eig, N); // Print the eigenvalues of the matrix.
+
+  */
+
+  populate_matrix(mat, N);
+  print_matrix(mat, N);
+  Jacobi(mat, eig, N);
+  printf("\n");
+  print_matrix(mat, N);
+  print_vector(eig, N); // Note that the eigenvalues are 1/4 of what they should be. In units of 2\hbar^2/\mu, where \mu is just mass. So actually in units of 4*\hbar^2/2\mu (which is what we want). 
 
 }
 
