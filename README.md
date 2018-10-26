@@ -13,3 +13,8 @@ Solutions to problems from Physics 4G03, taught at McMaster University during th
     * This is probably grossly inefficient, but it works well for Hermitian matrices (up to n = 25+).
     * I also need to implement a sorting method, to sort eigenvalues.
     * Also includes some functions to generate a special Hermitian matrix based on the potential $$V(x)=\frac{\hbar^2}{2\mu}\bigg(\frac{0.05}{\sin^2{x}}+\frac{5}{\cos^2{x}}\bigg)$$ (plug that into LaTeX).
+4. Working implementation of Lanczos routine in C++ @ [[lanczos.cpp]](https://github.com/brindavenkataramani/4G03/blob/master/lanczos.cpp)
+    * Includes driver program to test.
+    * Can possibly improve it by moving some housekeeping from the main program to the Lanczos routine itself.
+    * Validated against Matlab results.
+    * Works with Hermitian matrices.
