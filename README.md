@@ -12,3 +12,4 @@ Solutions to problems from Physics 4G03, taught at McMaster University during th
     * I still need to implement some validations after running the routine.
     * This is probably grossly inefficient, but it works well for Hermitian matrices (up to n = 25+).
     * I also need to implement a sorting method, to sort eigenvalues.
+    * Also includes some functions to generate a special Hermitian matrix based on the potential $$V(x)=\frac{\hbar^2}{2\mu}\bigg(\frac{0.05}{\sin^2{x}}+\frac{5}{\cos^2{x}}\bigg)$$ (plug that into LaTeX).
