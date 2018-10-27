@@ -5,6 +5,8 @@
 #include <iostream>
 #include <cmath> // Note that we can just use abs instead of fabs in C++.
 #include <vector> // For vector structure.
+#include <cstdlib>
+#include <cstdio>
 
 using namespace std;
 
