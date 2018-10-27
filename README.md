@@ -16,5 +16,8 @@ Solutions to problems from Physics 4G03, taught at McMaster University during th
 4. Working implementation of Lanczos routine in C++ @ [[lanczos.cpp]](https://github.com/brindavenkataramani/4G03/blob/master/lanczos.cpp)
     * Includes driver program to test.
     * Can possibly improve it by moving some housekeeping from the main program to the Lanczos routine itself.
+    * More possible improvements include fine-tuning some functions like swap_values() to be more useful in different situations.
     * Validated against Matlab results.
     * Works with Hermitian matrices.
+    
+    
