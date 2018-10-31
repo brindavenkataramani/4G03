@@ -30,7 +30,7 @@ void hv(vector<double>& y, const vector<double>& x,int L) {
         k=i; 
         COND_BIT_SET(k,jm,BIT_CHECK(i,j)); 
         COND_BIT_SET(k,j,BIT_CHECK(i,jm)); 
-        y[k] += xov2;
+        y[k%L] += xov2;
         jm = j;
     
         }
